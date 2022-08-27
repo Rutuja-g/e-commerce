@@ -17,9 +17,7 @@ function App() {
           <Starred />
         </Route>
 
-        <Route>
-          <div>Not found</div>
-        </Route>
+        <Route>This is 404 page</Route>
       </Switch>
     </div>
   );

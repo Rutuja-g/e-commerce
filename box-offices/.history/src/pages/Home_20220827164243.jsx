@@ -9,6 +9,7 @@ function Home() {
     // console.log(ev.target.value);
   };
   const onSearch = () => {
+    // https://api.tvmaze.com/search/shows?q=men
     fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
       .then(r => r.json())
       .then(result => {
@@ -20,7 +21,7 @@ function Home() {
     if (ev.keyCode === 13) {
       onSearch();
     }
-    // console.log(ev.keyCode);
+    console.log(ev.keyCode);
   };
 
   return (

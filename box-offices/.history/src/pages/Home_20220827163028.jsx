@@ -8,29 +8,17 @@ function Home() {
     setInput(ev.target.value);
     // console.log(ev.target.value);
   };
+
   const onSearch = () => {
-    fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
-      .then(r => r.json())
-      .then(result => {
-        console.log(result);
-      });
-  };
-
-  const onKeyDown = ev => {
-    if (ev.keyCode === 13) {
-      onSearch();
+    // https://api.tvmaze.com/search/shows?q=men
+    fetch(`https://api.tvmaze.com/search/shows?q=${input}`);
+    {
+      /*fetch function returns promise*/
     }
-    // console.log(ev.keyCode);
   };
-
   return (
     <MainPageLayout>
-      <input
-        type="text"
-        onChange={onInputChange}
-        onKeyDown={onKeyDown}
-        value={input}
-      />
+      <input type="text" onChange={onInputChange} value={input} />
       <button type="button" onClick={onSearch}>
         Search
       </button>

@@ -9,6 +9,7 @@ function Home() {
     // console.log(ev.target.value);
   };
   const onSearch = () => {
+    // https://api.tvmaze.com/search/shows?q=men
     fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
       .then(r => r.json())
       .then(result => {
@@ -16,21 +17,17 @@ function Home() {
       });
   };
 
-  const onKeyDown = ev => {
-    if (ev.keyCode === 13) {
-      onSearch();
-    }
-    // console.log(ev.keyCode);
-  };
+  const onKeyDown =ev=>{
+     if(ev.keyCode===13){
+      onSearch()
+     }
+     console.log(ev.keyCode)
+  }
 
+  
   return (
     <MainPageLayout>
-      <input
-        type="text"
-        onChange={onInputChange}
-        onKeyDown={onKeyDown}
-        value={input}
-      />
+      <input type="text" onChange={onInputChange}onKeyDown={} value={input} />
       <button type="button" onClick={onSearch}>
         Search
       </button>

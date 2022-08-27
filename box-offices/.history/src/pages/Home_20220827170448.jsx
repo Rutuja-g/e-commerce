@@ -7,16 +7,17 @@ function Home() {
   const [input, setInput] = useState('');
   const [results, setResults] = useState(null);
 
-  const onSearch = () => {
-    apiGet(`/search/shows?q=${input}`).then(result => {
-      setResults(result);
-      console.log(result);
-    });
-  };
-
   const onInputChange = ev => {
     setInput(ev.target.value);
     // console.log(ev.target.value);
+  };
+  const onSearch = () => {
+    fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
+      .then(r => r.json())
+      .then(result => {
+        setResults(result);
+        console.log(result);
+      });
   };
 
   const onKeyDown = ev => {

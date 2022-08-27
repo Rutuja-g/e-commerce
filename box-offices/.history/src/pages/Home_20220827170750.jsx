@@ -12,6 +12,13 @@ function Home() {
       setResults(result);
       console.log(result);
     });
+
+    fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
+      .then(r => r.json())
+      .then(result => {
+        setResults(result);
+        console.log(result);
+      });
   };
 
   const onInputChange = ev => {

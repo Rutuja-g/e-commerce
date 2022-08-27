@@ -8,10 +8,14 @@ function Home() {
   const [results, setResults] = useState(null);
 
   const onSearch = () => {
-    apiGet(`/search/shows?q=${input}`).then(result => {
-      setResults(result);
-      console.log(result);
-    });
+    apiGet(`/search/shows?q=${input}`);
+
+    fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
+      .then(r => r.json())
+      .then(result => {
+        setResults(result);
+        console.log(result);
+      });
   };
 
   const onInputChange = ev => {

@@ -7,7 +7,7 @@ import IMAGE_NOT_FOUND from '../../images/not-found.png';
 
 function ShowGrid({ data }) {
   return (
-    <FlexGrid>
+    <div>
       {data.map(({ show }) => (
         <ShowCard
           key={show.id}
@@ -17,7 +17,7 @@ function ShowGrid({ data }) {
           summary={show.summary}
         />
       ))}
-    </FlexGrid>
+    </div>
   );
 }
 

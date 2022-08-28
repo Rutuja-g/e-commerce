@@ -17,7 +17,7 @@ function ActorGrid({ data }) {
           image={person.image ? person.image.medium : IMAGE_NOT_FOUND}
         />
       ))}
-    </FlexGrid>
+    </Fle>
   );
 }
 

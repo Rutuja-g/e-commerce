@@ -11,8 +11,8 @@ function Show() {
     let isMounted = true;
     apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`)
       .then(results => {
-        if (isMounted) {
-          setShow(results);
+        
+          if (isMounted) setShow(results);
           setIsLoading(false);
         }
       })

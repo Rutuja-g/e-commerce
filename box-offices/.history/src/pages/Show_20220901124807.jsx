@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiGet } from '../misc/config';
@@ -11,7 +12,6 @@ const reducer = (prevState, action) => {
     case 'FETCH_FAILED': {
       return { ...prevState, isLoading: false, error: action.error };
     }
-
     default:
       return prevState;
   }
@@ -26,14 +26,15 @@ const initialState = {
 function Show() {
   const { id } = useParams();
 
-  const [{ show, isLoading, error }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [, dispatch] = useReducer(reducer, initialState);
+  // const [show, setShow] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  // console.log('state', state);
 
   useEffect(() => {
     let isMounted = true;
-
     apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`)
       .then(results => {
         if (isMounted) {
@@ -50,18 +51,16 @@ function Show() {
       isMounted = false;
     };
   }, [id]);
-
   console.log('show', show);
-
   if (isLoading) {
     return <div>Data is being loaded</div>;
   }
-
   if (error) {
-    return <div>Error occured: {error}</div>;
+    return <div>Error occured:{error}</div>;
   }
+  console.log('params', params);
 
-  return <div>this is show page</div>;
+  return <div>This is Show Page</div>;
 }
 
 export default Show;

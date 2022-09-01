@@ -11,7 +11,6 @@ const reducer = (prevState, action) => {
     case 'FETCH_FAILED': {
       return { ...prevState, isLoading: false, error: action.error };
     }
-
     default:
       return prevState;
   }
@@ -30,10 +29,11 @@ function Show() {
     reducer,
     initialState
   );
-
+  // const [show, setShow] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
   useEffect(() => {
     let isMounted = true;
-
     apiGet(`/shows/${id}?embed[]=seasons&embed[]=cast`)
       .then(results => {
         if (isMounted) {
@@ -50,18 +50,15 @@ function Show() {
       isMounted = false;
     };
   }, [id]);
-
   console.log('show', show);
-
   if (isLoading) {
     return <div>Data is being loaded</div>;
   }
-
   if (error) {
-    return <div>Error occured: {error}</div>;
+    return <div>Error occured:{error}</div>;
   }
-
-  return <div>this is show page</div>;
+  //   console.log('params', params);OO
+  return <div>This is Show Page</div>;
 }
 
 export default Show;

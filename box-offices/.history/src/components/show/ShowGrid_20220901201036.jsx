@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import ShowCard from './ShowCard';
 
@@ -13,16 +12,6 @@ function ShowGrid({ data }) {
   return (
     <FlexGrid>
       {data.map(({ show }) => {
-        const isStarred = starredShows.includes(show.id);
-
-        const onStarClick = () => {
-          if (isStarred) {
-            dispatchStarred({ type: 'REMOVE', showId: show.id });
-          } else {
-            dispatchStarred({ type: 'ADD', showId: show.id });
-          }
-        };
-
         return (
           <ShowCard
             key={show.id}
@@ -30,8 +19,6 @@ function ShowGrid({ data }) {
             name={show.name}
             image={show.image ? show.image.medium : IMAGE_NOT_FOUND}
             summary={show.summary}
-            onStarClick={onStarClick}
-            isStarred={isStarred}
           />
         );
       })}

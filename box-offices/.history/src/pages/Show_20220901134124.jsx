@@ -84,10 +84,10 @@ function Show() {
         />
       </InfoBlock>
 
-      <InfoBlock>
+      <div>
         <h2>Seasons</h2>
         <Seasons seasons={show._embedded.seasons} />
-      </InfoBlock>
+      </div>
 
       <div>
         <h2>Cast</h2>

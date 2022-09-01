@@ -1,13 +1,13 @@
 import React from 'react';
 import IMG_PLACEHOLDER from '../../images/not-found.png';
 import { Star } from '../styled';
-import { Headline, MainDataWrapper, TagList } from './ShowMainData.styled';
+import { MainDataWrapper } from './ShowMainData.styled';
 
 function ShowMainData({ name, rating, summary, tags, image }) {
   return (
     <MainDataWrapper>
       <img src={image ? image.original : IMG_PLACEHOLDER} alt="show-cover" />
-      <Headline>
+      <div>
         <div>
           <h1>{name}</h1>
           <div>
@@ -22,13 +22,13 @@ function ShowMainData({ name, rating, summary, tags, image }) {
 
         <div>
           Tags:{' '}
-          <TagList>
+          <div>
             {tags.map((tag, i) => (
               <span key={i}>{tag}</span>
             ))}
-          </TagList>
+          </div>
         </div>
-      </Headline>
+      </div>
     </MainDataWrapper>
   );
 }

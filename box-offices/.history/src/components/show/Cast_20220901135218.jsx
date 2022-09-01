@@ -15,7 +15,7 @@ function Cast({ cast }) {
           </div>
           <div className="actor">
             <span>
-              <span className="bold">{person.name}</span> | {character.name}{' '}
+              <span>{person.name}</span> | {character.name}{' '}
               {voice ? '| Voice' : ''}
             </span>
           </div>

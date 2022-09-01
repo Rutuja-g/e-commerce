@@ -6,7 +6,7 @@ import ShowMainData from '../components/show/ShowMainData';
 import Details from '../components/show/Details';
 import Seasons from '../components/show/Seasons';
 import Cast from '../components/show/Cast';
-import { InfoBlock, ShowPageWrapper } from './Show.styled';
+import { ShowPageWrapper } from './Show.styled';
 
 const reducer = (prevState, action) => {
   switch (action.type) {
@@ -75,25 +75,25 @@ function Show() {
         tags={show.genres}
       />
 
-      <InfoBlock>
+      <div>
         <h2>Details</h2>
         <Details
           status={show.status}
           network={show.network}
           premiered={show.premiered}
         />
-      </InfoBlock>
+      </div>
 
-      <InfoBlock>
+      <div>
         <h2>Seasons</h2>
         <Seasons seasons={show._embedded.seasons} />
-      </InfoBlock>
+      </div>
 
       <div>
         <h2>Cast</h2>
         <Cast cast={show._embedded.cast} />
       </div>
-    </ShowPageWrapper>
+    </ShowP>
   );
 }
 

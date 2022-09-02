@@ -4,7 +4,7 @@ import { useShows } from '../misc/custom-hooks';
 import { apiGet } from '../misc/config';
 import ShowGrid from '../components/show/ShowGrid';
 
-function Starred() {
+const Starred = () => {
   const [starred] = useShows();
 
   const [shows, setShows] = useState(null);
@@ -38,6 +38,6 @@ function Starred() {
       {!isLoading && !error && shows && <ShowGrid data={shows} />}
     </MainPageLayout>
   );
-}
+};
 
 export default Starred;

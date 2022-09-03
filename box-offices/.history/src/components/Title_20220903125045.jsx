@@ -1,5 +1,4 @@
 import React from 'react';
-import { TitleWrapper } from './Title.styled';
 
 function Title({ title, subtitle }) {
   return (

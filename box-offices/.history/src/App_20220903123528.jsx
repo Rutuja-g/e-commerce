@@ -15,7 +15,8 @@ const theme = {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <ThemeProvider></ThemeProvider>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -31,7 +32,7 @@ function App() {
           <div>Not found</div>
         </Route>
       </Switch>
-    </ThemeProvider>
+    </>
   );
 }
 

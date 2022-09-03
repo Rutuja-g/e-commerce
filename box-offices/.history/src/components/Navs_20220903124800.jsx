@@ -8,7 +8,7 @@ const LINKS = [
   { to: '/starred', text: 'Starred' },
 ];
 
-function Navs() {
+const Navs = () => {
   const location = useLocation();
 
   return (
@@ -27,6 +27,6 @@ function Navs() {
       </NavList>
     </div>
   );
-}
+};
 
 export default Navs;

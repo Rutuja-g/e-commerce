@@ -6,7 +6,7 @@ import { apiGet } from '../misc/config';
 import { useLastQuery } from '../misc/custom-hooks';
 
 function Home() {
-  const [input, setInput] = useLastQuery();
+  const [input, setInput] = useLastQuery('');
   const [results, setResults] = useState(null);
   const [searchOption, setSearchOption] = useState('shows');
 

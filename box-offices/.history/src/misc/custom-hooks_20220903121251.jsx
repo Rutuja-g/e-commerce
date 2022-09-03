@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useState } from 'react';
+import { useReducer, useEffect } from 'react';
 import { apiGet } from './config';
 
 function showsReducer(prevState, action) {

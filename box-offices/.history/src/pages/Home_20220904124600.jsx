@@ -77,12 +77,16 @@ function Home() {
 
         <div>
           <CustomRadio
-            label="Actors"
+            label="Shows"
             id="actors-search"
             value="people"
             checked={!isShowsSearch}
             onChange={onRadioChange}
           />
+          <label htmlFor="actors-search">
+            Actors
+            <input type="radio" />
+          </label>
         </div>
       </RadioInputsWrapper>
 

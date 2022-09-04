@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ActorGrid from '../components/actor/ActorGrid';
-import CustomRadio from '../components/CustomRadio';
 import MainPageLayout from '../components/MainPageLayout';
 import ShowGrid from '../components/show/ShowGrid';
 import { apiGet } from '../misc/config';
@@ -66,23 +65,28 @@ function Home() {
 
       <RadioInputsWrapper>
         <div>
-          <CustomRadio
-            label="Shows"
-            id="shows-search"
-            value="shows"
-            checked={isShowsSearch}
-            onChange={onRadioChange}
-          />
+          <label htmlFor="shows-search">
+            Shows
+            <input
+              id="shows-search"
+              type="radio"
+              value="shows"
+              checked={isShowsSearch}
+              onChange={onRadioChange}
+            />
+          </label>
         </div>
-
         <div>
-          <CustomRadio
-            label="Actors"
-            id="actors-search"
-            value="people"
-            checked={!isShowsSearch}
-            onChange={onRadioChange}
-          />
+          <label htmlFor="actors-search">
+            Actors
+            <input
+              id="actors-search"
+              type="radio"
+              value="people"
+              checked={!isShowsSearch}
+              onChange={onRadioChange}
+            />
+          </label>
         </div>
       </RadioInputsWrapper>
 

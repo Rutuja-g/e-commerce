@@ -1,5 +1,5 @@
 {
-  "homepage": "https://Rutuja-g.github.io/box-offices",
+  "homepage": "https://Rutuja-g.github.io/my-app",
   "name": "box-offices",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +7,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fade-in": "^2.0.1",
@@ -25,9 +24,7 @@
     "lint": "eslint src/**/*.js",
     "format": "prettier --write src/**/*.js",
     "format:lint": "npm run format && npm run lint",
-    "clear": "rimraf build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "clear": "rimraf build"
   },
   "eslintConfig": {
     "extends": [

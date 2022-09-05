@@ -29,4 +29,4 @@ function Navs() {
   );
 }
 
-export default memo(Navs);
+export default Navs;

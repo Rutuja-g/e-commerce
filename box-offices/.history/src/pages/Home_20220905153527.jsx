@@ -4,14 +4,14 @@ import CustomRadio from '../components/CustomRadio';
 import MainPageLayout from '../components/MainPageLayout';
 import ShowGrid from '../components/show/ShowGrid';
 import { apiGet } from '../misc/config';
-import { useLastQuery } from '../misc/custom-hooks';
+import { useLastQuery, useWhyDidYouUpdate } from '../misc/custom-hooks';
 import {
   RadioInputsWrapper,
   SearchButtonWrapper,
   SearchInput,
 } from './Home.styled';
 
-const renderResults = results => {
+const renderResults = () => {
   if (results && results.length === 0) {
     return <div>No results</div>;
   }
@@ -57,6 +57,8 @@ function Home() {
     setSearchOption(ev.target.value);
   }, []);
 
+  useWhyDidYouUpdate('home', { onInputChange, onKeyDown });
+
   return (
     <MainPageLayout>
       <SearchInput
@@ -94,7 +96,7 @@ function Home() {
           Search
         </button>
       </SearchButtonWrapper>
-      {renderResults(results)}
+      {renderResults()}
     </MainPageLayout>
   );
 }

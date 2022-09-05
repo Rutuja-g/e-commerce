@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star } from '../styled';
 // import { SearchCard } from '../styled';
 import { StyledShowCard } from './ShowCard.styled';
 
 function ShowCard({ id, image, name, summary, onStarClick, isStarred }) {
-  // console.log('render');
+  console.log('render');
   const summaryAsText = summary
     ? `${summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, '')}...`
     : 'No description';
@@ -30,4 +30,4 @@ function ShowCard({ id, image, name, summary, onStarClick, isStarred }) {
   );
 }
 
-export default memo(ShowCard);
+export default ShowCard;

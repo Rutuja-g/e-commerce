@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import React, { useCallback } from 'react';
 import ShowCard from './ShowCard';
@@ -16,13 +15,13 @@ function ShowGrid({ data }) {
       {data.map(({ show }) => {
         const isStarred = starredShows.includes(show.id);
 
-        const onStarClick = useCallback(() => {
+        const onStarClick =useCallback(() => {
           if (isStarred) {
             dispatchStarred({ type: 'REMOVE', showId: show.id });
           } else {
             dispatchStarred({ type: 'ADD', showId: show.id });
           }
-        }, [isStarred, show.id]);
+        };) 
 
         return (
           <ShowCard

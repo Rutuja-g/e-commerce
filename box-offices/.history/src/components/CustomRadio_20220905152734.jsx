@@ -53,7 +53,7 @@ const RadioWrapper = styled.label`
   }
 `;
 
-function CustomRadio({ label, ...restProps }) {
+const CustomRadio = ({ label, ...restProps }) => {
   return (
     <RadioWrapper htmlFor={restProps.id}>
       {label}
@@ -61,6 +61,6 @@ function CustomRadio({ label, ...restProps }) {
       <span />
     </RadioWrapper>
   );
-}
+};
 
 export default memo(CustomRadio);

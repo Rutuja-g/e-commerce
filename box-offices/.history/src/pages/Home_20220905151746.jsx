@@ -11,22 +11,6 @@ import {
   SearchInput,
 } from './Home.styled';
 
-const renderResults = results => {
-  if (results && results.length === 0) {
-    return <div>No results</div>;
-  }
-
-  if (results && results.length > 0) {
-    return results[0].show ? (
-      <ShowGrid data={results} />
-    ) : (
-      <ActorGrid data={results} />
-    );
-  }
-
-  return null;
-};
-
 function Home() {
   const [input, setInput] = useLastQuery();
   const [results, setResults] = useState(null);
@@ -56,6 +40,22 @@ function Home() {
   const onRadioChange = useCallback(ev => {
     setSearchOption(ev.target.value);
   }, []);
+
+  const renderResults = () => {
+    if (results && results.length === 0) {
+      return <div>No results</div>;
+    }
+
+    if (results && results.length > 0) {
+      return results[0].show ? (
+        <ShowGrid data={results} />
+      ) : (
+        <ActorGrid data={results} />
+      );
+    }
+
+    return null;
+  };
 
   return (
     <MainPageLayout>
@@ -94,7 +94,7 @@ function Home() {
           Search
         </button>
       </SearchButtonWrapper>
-      {renderResults(results)}
+      {renderResults()}
     </MainPageLayout>
   );
 }

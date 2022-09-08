@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router';
-import { useProfile } from '../context/profile.context';
 
 function PrivateRoute({ children, ...routeProps }) {
-  const profile = useProfile();
+  const profile = useContext(profile);
 
   if (!profile) {
     return <Redirect to="/signin" />;

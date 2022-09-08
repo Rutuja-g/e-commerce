@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { useProfile } from '../context/profile.context';
+import { useProfile } from '../context/profile.contacts';
 
 function PrivateRoute({ children, ...routeProps }) {
   const profile = useProfile();

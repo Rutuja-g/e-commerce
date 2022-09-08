@@ -10,11 +10,12 @@ export function ProfileProvider({ children }) {
   useEffect(() => {
     let userRef;
     const authUnsub = auth.onAuthStateChanged(authObj => {
+      // console.log('authObj', authObj);
       if (authObj) {
         userRef = database.ref(`/profiles/${authObj.uid}`);
         userRef.on('value', snap => {
           const { name, createdAt } = snap.val();
-
+          // console.log('profileData', profileData);
           const data = {
             name,
             createdAt,
@@ -27,7 +28,7 @@ export function ProfileProvider({ children }) {
         });
       } else {
         if (userRef) {
-          userRef.off();
+          userRef.off;
         }
         setProfile(null);
         setIsLoading(false);
@@ -36,9 +37,6 @@ export function ProfileProvider({ children }) {
 
     return () => {
       authUnsub();
-      if (userRef) {
-        userRef.off();
-      }
     };
   }, []);
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { Container, Loader } from 'rsuite';
 import { useProfile } from '../context/profile.context';
 
 function PublicRoute({ children, ...routeProps }) {

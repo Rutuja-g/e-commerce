@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, database } from '../misc/firebase';
 
@@ -8,13 +9,12 @@ export function ProfileProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let userRef;
-    const authUnsub = auth.onAuthStateChanged(authObj => {
+    auth.onAuthStateChanged(authObj => {
+      // console.log('authObj', authObj);
       if (authObj) {
-        userRef = database.ref(`/profiles/${authObj.uid}`);
-        userRef.on('value', snap => {
+        database.ref(`/profiles/${authObj.uid}`).on('value', snap => {
           const { name, createdAt } = snap.val();
-
+          // console.log('profileData', profileData);
           const data = {
             name,
             createdAt,
@@ -26,20 +26,10 @@ export function ProfileProvider({ children }) {
           setIsLoading(false);
         });
       } else {
-        if (userRef) {
-          userRef.off();
-        }
         setProfile(null);
-        setIsLoading(false);
+        setProfile(null);
       }
     });
-
-    return () => {
-      authUnsub();
-      if (userRef) {
-        userRef.off();
-      }
-    };
   }, []);
 
   return (

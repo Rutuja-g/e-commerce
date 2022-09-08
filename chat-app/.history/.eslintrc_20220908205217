@@ -13,7 +13,7 @@
     }
   },
   "rules": {
-    "react/jsx-no-constructed-context-values": "off",
+    // "react/jsx-no-constructed-context-values": "off",
     "no-plusplus": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [0],

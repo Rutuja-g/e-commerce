@@ -1,24 +1,11 @@
 import React from 'react';
 import firebase from 'firebase/app';
-import { Button, Col, Container, Grid, Panel, Row, Icon, Alert } from 'rsuite';
-import { auth, database } from '../misc/firebase';
+import { Button, Col, Container, Grid, Panel, Row, Icon } from 'rsuite';
+import { auth } from '../misc/firebase';
 
 function SignIn() {
   const signInWithProvider = async provider => {
-    try {
-      const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
-      if (additionalUserInfo.isNewUser) {
-        await database.ref(`/profiles/${user.uid}`).set({
-          name: user.displayName,
-          createdAt: firebase.database.ServerValue.TIMESTAMP,
-        });
-      }
-
-      Alert.success('Signed in', 4000);
-    } catch (err) {
-      Alert.error(err.message, 4000);
-    }
-    // console.log('result', result);
+    const result = await auth.signInWithPopup(provider);
   };
   const onFacebookSignIn = () => {
     signInWithProvider(new firebase.auth.FacebookAuthProvider());
@@ -41,8 +28,9 @@ function SignIn() {
                 <Button block color="blue" onClick={onFacebookSignIn}>
                   <Icon icon="facebook" /> Continue with Facebook
                 </Button>
-                <Button block color="green" onClick={onGoogleSignIn}>
-                  <Icon icon="google" /> Continue with Google
+                <Button block color="green">
+                  <Icon icon="google" onClick={onGoogleSignIn} /> Continue with
+                  Google
                 </Button>
               </div>
             </Panel>

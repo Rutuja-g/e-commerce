@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
-import { Button, Col, Container, Grid, Panel, Row, Icon, Alert } from 'rsuite';
+import { Button, Col, Container, Grid, Panel, Row, Icon } from 'rsuite';
 import { auth, database } from '../misc/firebase';
 
 function SignIn() {
@@ -14,9 +14,9 @@ function SignIn() {
         });
       }
 
-      Alert.success('Signed in', 4000);
+      alert.success('Signed in', 4000);
     } catch (err) {
-      Alert.error(err.message, 4000);
+      alert.error(err.message, 4000);
     }
     // console.log('result', result);
   };

@@ -5,14 +5,14 @@ import Dashboard from '.';
 
 function DashboardToggle() {
   const { isOpen, close, open } = useModalState();
-  const isMobile = useMediaQuery('(max-width:992px)');
+  useMediaQuery('(max-width:992px)');
 
   return (
     <>
       <Button block color="blue" onClick={open}>
         <Icon icon="dashboard" /> Dashboard
       </Button>
-      <Drawer full={isMobile} show={isOpen} onHide={close} placement="left">
+      <Drawer full show={isOpen} onHide={close} placement="left">
         <Dashboard />
       </Drawer>
     </>

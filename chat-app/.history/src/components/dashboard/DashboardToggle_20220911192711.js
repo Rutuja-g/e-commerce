@@ -22,7 +22,7 @@ function DashboardToggle() {
         <Icon icon="dashboard" /> Dashboard
       </Button>
       <Drawer full={isMobile} show={isOpen} onHide={close} placement="left">
-        <Dashboard onSignOut={onSignOut} />
+        <Dashboard />
       </Drawer>
     </>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import React, { useCallback } from 'react';
 import { Button, Icon, Drawer, Alert } from 'rsuite';
 import { useMediaQuery, useModalState } from '../../misc/custom-hooks';

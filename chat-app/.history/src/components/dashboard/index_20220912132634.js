@@ -1,9 +1,8 @@
-/* eslint-disable react/function-component-definition */
 import React from 'react';
 import { Drawer, Button } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 
-const Dashboard = ({ onSignOut }) => {
+function Dashboard({ onSignOut }) {
   const { profile } = useProfile();
   return (
     <>
@@ -16,10 +15,10 @@ const Dashboard = ({ onSignOut }) => {
       <Drawer.Footer>
         <Button block color="red" onClick={onSignOut}>
           Sign out
-        </Button>
+        {/* </Button> */}
       </Drawer.Footer>
     </>
   );
-};
+}
 
 export default Dashboard;

@@ -1,13 +1,11 @@
 import React from 'react';
-import { Drawer, Button, Divider } from 'rsuite';
+import { Drawer, Button } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
-  const onSave = async newData => {
-    console.log(newData);
-  };
+  const onSave = async _newData => {};
 
   return (
     <>

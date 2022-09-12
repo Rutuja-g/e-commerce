@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Button, Icon, Drawer, Alert } from 'rsuite';
 import { useModalState, useMediaQuery } from '../../misc/custom-hooks';
 import Dashboard from '.';
@@ -22,7 +22,7 @@ const DashboardToggle = () => {
         <Icon icon="dashboard" /> Dashboard
       </Button>
       <Drawer full={isMobile} show={isOpen} onHide={close} placement="left">
-        <Dashboard onSignOut={onSignOut} />
+        <Dashboard />
       </Drawer>
     </>
   );

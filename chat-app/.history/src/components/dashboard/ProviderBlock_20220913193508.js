@@ -38,10 +38,10 @@ const ProviderBlock = () => {
   };
 
   const unlinkFacebook = () => {
-    unlinkProvider('facebook.com');
+    unlink('facebook.com');
   };
   const unlinkGoogle = () => {
-    unlinkProvider('google.com');
+    unlink('google.com');
   };
 
   const link = async provider => {

@@ -56,10 +56,8 @@ const ProviderBlock = () => {
   const linkFacebook = () => {
     link(new firebase.auth.FacebookAuthProvider());
   };
-  const linkGoogle = () => {
-    link(new firebase.auth.GoogleAuthProvider());
-  };
-
+  const linkGoogle = () => {};
+  link(new firebase.auth.GoogleAuthProvider());
   return (
     <div>
       {isConnected['google.com'] && (

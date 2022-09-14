@@ -25,7 +25,7 @@ const getBlob = canvas => {
 const AvatarUploadBtn = () => {
   const { isOpen, open, close } = useModalState();
 
-  const { profile } = useProfile();
+  const { profile } = useProfile;
   const [img, setImg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const avatarEditorRef = useRef();
@@ -59,7 +59,6 @@ const AvatarUploadBtn = () => {
       const uploadAvatarResult = await avatarFileRef.put(blob, {
         cacheControl: `public,max-age=${3600 * 24 * 3}`,
       });
-
       const downloadUrl = await uploadAvatarResult.ref.getDownloadURL();
 
       const userAvatarRef = database

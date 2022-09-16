@@ -21,7 +21,7 @@ const Sidebar = () => {
         <CreateRoomBtnModal />
         <Divider>Join conversation</Divider>
       </div>
-      <ChatRoomList aboveElHeight={height} />
+      <ChatRoomList aboveElHeight />
     </div>
   );
 };

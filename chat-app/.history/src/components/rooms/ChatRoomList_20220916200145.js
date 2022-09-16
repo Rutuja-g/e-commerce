@@ -16,7 +16,6 @@ const ChatRoomList = ({ aboveElHeight }) => {
       style={{
         height: `calc(100% - ${aboveElHeight}px)`,
       }}
-      activeKey={location.pathname}
     >
       {!rooms && (
         <Loader center vertical content="Loading" speed="slow" size="md" />
@@ -26,9 +25,8 @@ const ChatRoomList = ({ aboveElHeight }) => {
         rooms.map(room => (
           <Nav.Item
             componentClass={Link}
-            to={`/chat/${room.id}`}
+            to={`/chats/${room.id}`}
             key={room.id}
-            eventKey={`/chat/${room.id}`}
           >
             <RoomItem room={room} />
           </Nav.Item>

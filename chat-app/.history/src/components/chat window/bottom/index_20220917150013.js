@@ -44,22 +44,11 @@ const Bottom = () => {
       msgId: messageId,
     };
 
-    setIsLoading(true);
     try {
       await database.ref().update(updates);
-
       setInput('');
-      setIsLoading(false);
     } catch (err) {
-      setIsLoading(false);
       Alert.error(err.message);
-    }
-  };
-
-  const onKeyDown = ev => {
-    if (ev.keyCode === 13) {
-      ev.preventDefault();
-      onSendClick();
     }
   };
 
@@ -70,13 +59,11 @@ const Bottom = () => {
           placeholder="Write a new message here..."
           value={input}
           onChange={onInputChange}
-          onKeyDown={onKeyDown}
         />
         <InputGroup.Button
           color="blue"
           appearance="primary"
           onClick={onSendClick}
-          disabled={isLoading}
         >
           <Icon icon="send" />
         </InputGroup.Button>

@@ -55,11 +55,9 @@ const Bottom = () => {
       Alert.error(err.message);
     }
   };
-
   const onKeyDown = ev => {
     if (ev.keyCode === 13) {
       ev.preventDefault();
-      onSendClick();
     }
   };
 

@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { useParams } from 'react-router';
-import { Alert, Icon, Input, InputGroup } from 'rsuite';
+import { Icon, Input, InputGroup } from 'rsuite';
 import firebase from 'firebase/app';
 import { useProfile } from '../../../context/profile.context';
-import { database } from '../../../misc/firebase';
+import { useParams } from 'react-router';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -17,52 +16,20 @@ function assembleMessage(profile, chatId) {
     createdAt: firebase.database.ServerValue.TIMESTAMP,
   };
 }
-
 const Bottom = () => {
   const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const { chatId } = useParams();
   const { profile } = useProfile();
   const onInputChange = useCallback(value => {
     setInput(value);
   }, []);
 
-  const onSendClick = async () => {
+  const onSendClick = () => {
     if (input.trim() === '') {
       return;
     }
-
     const msgData = assembleMessage(profile, chatId);
-    msgData.text = input;
-
-    const updates = {};
-    const messageId = database.ref('mesages').push().key;
-
-    updates[`/messages/${messageId}`] = msgData;
-    updates[`/rooms/${chatId}/lastMessage`] = {
-      ...msgData,
-      msgId: messageId,
-    };
-
-    setIsLoading(true);
-    try {
-      await database.ref().update(updates);
-
-      setInput('');
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-      Alert.error(err.message);
-    }
   };
-
-  const onKeyDown = ev => {
-    if (ev.keyCode === 13) {
-      ev.preventDefault();
-      onSendClick();
-    }
-  };
-
   return (
     <div>
       <InputGroup>
@@ -70,13 +37,11 @@ const Bottom = () => {
           placeholder="Write a new message here..."
           value={input}
           onChange={onInputChange}
-          onKeyDown={onKeyDown}
         />
         <InputGroup.Button
           color="blue"
           appearance="primary"
           onClick={onSendClick}
-          disabled={isLoading}
         >
           <Icon icon="send" />
         </InputGroup.Button>

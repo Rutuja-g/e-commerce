@@ -19,7 +19,7 @@ const Dashboard = ({ onSignOut }) => {
         database
       );
 
-      // console.log('updates', updates);
+      console.log('updates', updates);
 
       await database.ref().update(updates);
 

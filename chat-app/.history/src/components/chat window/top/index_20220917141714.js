@@ -7,7 +7,7 @@ import RoomInfoBtnModel from './RoomInfoBtnModel';
 
 const Top = () => {
   const name = useCurrentRoom(v => v.name);
-  const isMobile = useMediaQuery('(max-width:992px)');
+  const isMobile = useMediaQuery('max-width:992px');
 
   return (
     <div>

@@ -9,9 +9,7 @@ import { CurrentRoomProvider } from '../../context/current-room.context';
 
 const Chat = () => {
   const { chatId } = useParams();
-
   const rooms = useRooms();
-
   if (!rooms) {
     return <Loader center vertical size="md" content="Loading" speed="slow" />;
   }
@@ -21,12 +19,11 @@ const Chat = () => {
     return <h6 className="text-center mt-page">Chat {chatId} not found </h6>;
   }
 
-  const { name, description } = currentRoom;
+  const {name,description} = currentRoom
 
   const currentRoomData = {
-    name,
-    description,
-  };
+    name,description
+  }
 
   return (
     <CurrentRoomProvider data={currentRoomData}>
@@ -39,7 +36,7 @@ const Chat = () => {
       <div className="chat-bottom">
         <ChatBottom />
       </div>
-    </CurrentRoomProvider>
+    </Cur>
   );
 };
 

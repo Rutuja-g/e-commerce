@@ -9,9 +9,7 @@ import { CurrentRoomProvider } from '../../context/current-room.context';
 
 const Chat = () => {
   const { chatId } = useParams();
-
   const rooms = useRooms();
-
   if (!rooms) {
     return <Loader center vertical size="md" content="Loading" speed="slow" />;
   }

@@ -4,7 +4,7 @@ import { database } from '../../../misc/firebase';
 import { transformToArrWithId } from '../../../misc/Helpers';
 import MessageItem from './MessageItem';
 
-const Messages = () => {
+const messages = () => {
   const { chatId } = useParams();
 
   const [messages, setMessages] = useState(null);
@@ -35,4 +35,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default messages;

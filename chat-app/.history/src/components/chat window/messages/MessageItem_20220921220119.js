@@ -7,7 +7,7 @@ import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
 import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
-const MessageItem = ({ message, handleAdmin }) => {
+const MessageItem = ({ message }) => {
   const { author, createdAt, text } = message;
   const isAdmin = useCurrentRoom(v => v.isAdmin);
   const admins = useCurrentRoom(v => v.admins);
@@ -32,13 +32,8 @@ const MessageItem = ({ message, handleAdmin }) => {
           appearance="link"
           className="p-0 m1-1 text-black"
         >
-          {canGrantAdmin && (
-            <Button block onClick={() => handleAdmin(author.uid)} color="blue">
-              {isMsgAuthorAdmin
-                ? 'Remove admin permission'
-                : 'Give admin in this room'}
-            </Button>
-          )}
+          {/* <Button block onClick={()=>{}} color="blue">
+             </Button> */}
         </ProfileInfoBtnModel>
         <TimeAgo
           datetime={createdAt}

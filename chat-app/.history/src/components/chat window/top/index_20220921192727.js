@@ -29,7 +29,7 @@ const Top = () => {
           <span className="text-disappear">{name}</span>
         </h4>
         <ButtonToolbar className="ws-nowrap">
-          {isAdmin && <EditRoomBtnDrawer />}
+          <EditRoomBtnDrawer />
         </ButtonToolbar>
       </div>
       <div className="d-flex justify-content-between align-items-center">

@@ -15,12 +15,8 @@ const MessageItem = ({ message }) => {
           className="ml-1"
           size="xs"
         />
-        {/* <span className="ml-2">{author.name}</span> */}
-        <ProfileInfoBtnModel
-          profile={author}
-          appearance="link"
-          className="p-0 m1-1 text-black"
-        />
+        <span className="ml-2">{author.name}</span>
+        <ProfileInfoBtnModel profile={author} />
         <TimeAgo
           datetime={createdAt}
           className="font-normal text-black-45 ml-2"

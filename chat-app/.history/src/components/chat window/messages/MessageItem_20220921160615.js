@@ -15,7 +15,7 @@ const MessageItem = ({ message }) => {
           className="ml-1"
           size="xs"
         />
-        {/* <span className="ml-2">{author.name}</span> */}
+        <span className="ml-2">{author.name}</span>
         <ProfileInfoBtnModel
           profile={author}
           appearance="link"

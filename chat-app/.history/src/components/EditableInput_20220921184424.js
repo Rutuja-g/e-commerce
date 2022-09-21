@@ -36,7 +36,7 @@ const EditableInput = ({
   };
 
   return (
-    <div className={wrapperClassName}>
+    <div>
       {label}
       <InputGroup>
         <Input

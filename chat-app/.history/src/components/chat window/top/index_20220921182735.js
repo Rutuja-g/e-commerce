@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ButtonToolbar, Icon } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
-import EditRoomBtnDrawer from './EditRoomBtnDrawer';
 import RoomInfoBtnModel from './RoomInfoBtnModel';
 
 const Top = () => {

@@ -11,7 +11,6 @@ const MessageItem = ({ message }) => {
     <li className="padded mb-1">
       <div className="d-flex align-items-center font-bolder mb-1">
         <PresenceDot uid={author.uid} />
-
         <ProfileAvatar
           src={author.avatar}
           name={author.name}

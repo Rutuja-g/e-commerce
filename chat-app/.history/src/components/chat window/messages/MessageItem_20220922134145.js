@@ -6,7 +6,6 @@ import { useHover } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
-import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
 const MessageItem = ({ message, handleAdmin }) => {
@@ -52,7 +51,6 @@ const MessageItem = ({ message, handleAdmin }) => {
         />
 
         <IconBtnControl
-          {...(true ? { color: 'red' } : {})}
           isVisible
           iconName="heart"
           tootltip="Like this message"

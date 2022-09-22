@@ -31,7 +31,6 @@ const Messages = () => {
   const handleLike = useCallback(async msgId => {
     const { uid } = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
-
     let alertMsg;
 
     await messageRef.transaction(msg => {
@@ -42,11 +41,9 @@ const Messages = () => {
           alertMsg = 'Like removed';
         } else {
           msg.likeCount += 1;
-
           if (!msg.likes) {
             msg.likes = {};
           }
-
           msg.likes[uid] = true;
           alertMsg = 'Like added';
         }

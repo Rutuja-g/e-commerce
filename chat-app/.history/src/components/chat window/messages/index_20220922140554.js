@@ -29,26 +29,18 @@ const Messages = () => {
   }, [chatId]);
 
   const handleLike = useCallback(async msgId => {
-    const { uid } = auth.currentUser;
+    const {} = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
-
     let alertMsg;
 
-    await messageRef.transaction(msg => {
+    await adminsRef.transaction(msg => {
       if (msg) {
         if (msg.likes && msg.lines[uid]) {
-          msg.likeCount -= 1;
-          msg.likes[uid] = null;
-          alertMsg = 'Like removed';
+          msg[uid] = null;
+          alertMsg = 'Admin permission removed';
         } else {
-          msg.likeCount += 1;
-
-          if (!msg.likes) {
-            msg.likes = {};
-          }
-
-          msg.likes[uid] = true;
-          alertMsg = 'Like added';
+          msg[uid] = true;
+          alertMsg = 'Admin permission granted';
         }
       }
 

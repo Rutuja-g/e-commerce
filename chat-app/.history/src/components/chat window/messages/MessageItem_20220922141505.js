@@ -56,11 +56,11 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
 
         <IconBtnControl
           {...(isLiked ? { color: 'red' } : {})}
-          isVisible={canShowIcons}
+          isVisible
           iconName="heart"
           tootltip="Like this message"
           onClick={() => handleLike(message.id)}
-          badgeContent={likeCount}
+          badgeContent={5}
         />
       </div>
       <div>

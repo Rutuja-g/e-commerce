@@ -67,7 +67,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

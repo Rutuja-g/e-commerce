@@ -21,6 +21,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
     setFileList(filtered);
   };
 
+  console.log('fileList.map', fileList.map);
   const onUpload = async () => {
     try {
       const uploadPromises = fileList.map(f => {
@@ -67,7 +68,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

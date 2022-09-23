@@ -24,6 +24,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
   const onUpload = async () => {
     try {
       const uploadPromises = fileList.map(f => {
+        console.log('fileList.map', fileList.map);
         return storage
           .ref(`/chat/${chatId}`)
           .child(Date.now() + f.name)
@@ -67,7 +68,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

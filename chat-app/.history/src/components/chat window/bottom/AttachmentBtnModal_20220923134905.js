@@ -53,7 +53,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
       Alert.error(err.message);
     }
   };
-
+  console.log('fileList.map', fileList.map);
   return (
     <>
       <InputGroup.Button onClick={open}>
@@ -67,7 +67,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

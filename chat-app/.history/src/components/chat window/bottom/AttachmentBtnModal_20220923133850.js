@@ -38,7 +38,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
         return {
           contentType: snap.metadata.contentType,
           name: snap.metadata.name,
-          url: await snap.ref.getDownloadURL(),
+          url: await snap.ref.getDownloadURL(snap.ref),
         };
       });
 
@@ -67,7 +67,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

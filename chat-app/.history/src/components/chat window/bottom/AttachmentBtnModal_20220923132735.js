@@ -28,7 +28,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           .ref(`/chat/${chatId}`)
           .child(Date.now() + f.name)
           .put(f.blobFile, {
-            cacheControl: `public, max-age=${3600 * 24 * 3}`,
+            cacheControl: `public, max-age=${3600 * 24 * 4}`,
           });
       });
 
@@ -67,7 +67,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           <Uploader
             autoUpload={false}
             action=""
-            fileList={fileList}
+            fileList={setFileList}
             onChange={onChange}
             multiple
             listType="picture-text"

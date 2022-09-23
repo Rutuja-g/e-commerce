@@ -7,10 +7,10 @@ import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
 import IconBtnControl from './IconBtnControl';
-import ProfileInfoBtnModal from './ProfileInfoBtnModal';
+import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
-  const { author, createdAt, text, file, likes, likeCount } = message;
+  const { author, createdAt, text, likes, likeCount } = message;
 
   const [selfRef, isHovered] = useHover();
   const isMobile = useMediaQuery('(max-width: 992px)');
@@ -19,12 +19,12 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const admins = useCurrentRoom(v => v.admins);
 
   const isMsgAuthorAdmin = admins.includes(author.uid);
+
   const isAuthor = auth.currentUser.uid === author.uid;
   const canGrantAdmin = isAdmin && !isAuthor;
 
   const canShowIcons = isMobile || isHovered;
   const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
-
   return (
     <li
       className={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''}`}
@@ -40,10 +40,10 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           size="xs"
         />
 
-        <ProfileInfoBtnModal
+        <ProfileInfoBtnModel
           profile={author}
           appearance="link"
-          className="p-0 ml-1 text-black"
+          className="p-0 m1-1 text-black"
         >
           {canGrantAdmin && (
             <Button block onClick={() => handleAdmin(author.uid)} color="blue">
@@ -52,7 +52,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
                 : 'Give admin in this room'}
             </Button>
           )}
-        </ProfileInfoBtnModal>
+        </ProfileInfoBtnModel>
         <TimeAgo
           datetime={createdAt}
           className="font-normal text-black-45 ml-2"
@@ -62,7 +62,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           {...(isLiked ? { color: 'red' } : {})}
           isVisible={canShowIcons}
           iconName="heart"
-          tooltip="Like this message"
+          tootltip="Like this message"
           onClick={() => handleLike(message.id)}
           badgeContent={likeCount}
         />
@@ -70,15 +70,16 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           <IconBtnControl
             isVisible={canShowIcons}
             iconName="close"
-            tooltip="Delete this message"
-            onClick={() => handleDelete(message.id, file)}
+            tootltip="Delete this message"
+            onClick={() => handleDelete(message.id)}
           />
         )}
       </div>
 
-      <div>{text && <span className="word-breal-all">{text}</span>}</div>
+      <div>
+        <span className="word-break-all">{text}</span>
+      </div>
     </li>
   );
 };
-
 export default memo(MessageItem);

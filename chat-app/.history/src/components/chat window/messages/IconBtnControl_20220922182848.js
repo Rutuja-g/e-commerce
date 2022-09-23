@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Whisper, Tooltip, IconButton, Icon } from 'rsuite';
+import { Badge, Icon, IconButton, Tooltip, Whisper } from 'rsuite';
 
 const ConditionalBadge = ({ condition, children }) => {
   return condition ? <Badge content={condition}>{children}</Badge> : children;

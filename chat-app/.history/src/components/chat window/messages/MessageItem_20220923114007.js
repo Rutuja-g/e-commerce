@@ -7,10 +7,10 @@ import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
 import IconBtnControl from './IconBtnControl';
-import ProfileInfoBtnModal from './ProfileInfoBtnModal';
+import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
-  const { author, createdAt, text, file, likes, likeCount } = message;
+  const { author, createdAt, text, likes, likeCount } = message;
 
   const [selfRef, isHovered] = useHover();
   const isMobile = useMediaQuery('(max-width: 992px)');
@@ -19,6 +19,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const admins = useCurrentRoom(v => v.admins);
 
   const isMsgAuthorAdmin = admins.includes(author.uid);
+
   const isAuthor = auth.currentUser.uid === author.uid;
   const canGrantAdmin = isAdmin && !isAuthor;
 
@@ -40,7 +41,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           size="xs"
         />
 
-        <ProfileInfoBtnModal
+        <ProfileInfoBtnModel
           profile={author}
           appearance="link"
           className="p-0 ml-1 text-black"
@@ -52,7 +53,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
                 : 'Give admin in this room'}
             </Button>
           )}
-        </ProfileInfoBtnModal>
+        </ProfileInfoBtnModel>
         <TimeAgo
           datetime={createdAt}
           className="font-normal text-black-45 ml-2"
@@ -62,7 +63,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           {...(isLiked ? { color: 'red' } : {})}
           isVisible={canShowIcons}
           iconName="heart"
-          tooltip="Like this message"
+          tootltip="Like this message"
           onClick={() => handleLike(message.id)}
           badgeContent={likeCount}
         />
@@ -76,9 +77,10 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
         )}
       </div>
 
-      <div>{text && <span className="word-breal-all">{text}</span>}</div>
+      <div>
+        <span className="word-break-all">{text}</span>
+      </div>
     </li>
   );
 };
-
 export default memo(MessageItem);

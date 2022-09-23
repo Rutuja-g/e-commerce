@@ -59,7 +59,7 @@ const Messages = () => {
 
     await messageRef.transaction(msg => {
       if (msg) {
-        if (msg.likes && msg.likes[uid]) {
+        if (msg.likes && msg.lines[uid]) {
           msg.likeCount -= 1;
           msg.likes[uid] = null;
           alertMsg = 'Like removed';

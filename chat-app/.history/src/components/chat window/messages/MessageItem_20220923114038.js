@@ -7,7 +7,7 @@ import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 import ProfileAvatar from '../../ProfileAvatar';
 import IconBtnControl from './IconBtnControl';
-import ProfileInfoBtnModal from './ProfileInfoBtnModal';
+import ProfileInfoBtnModel from './ProfileInfoBtnModel';
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const { author, createdAt, text, file, likes, likeCount } = message;
@@ -76,7 +76,10 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
         )}
       </div>
 
-      <div>{text && <span className="word-breal-all">{text}</span>}</div>
+      <div>
+        {text && <span className="word-breal-all">{text}</span>}
+        {file && renderFileMessage(file)}
+      </div>
     </li>
   );
 };

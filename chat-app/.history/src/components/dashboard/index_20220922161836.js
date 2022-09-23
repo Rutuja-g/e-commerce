@@ -34,7 +34,7 @@ const Dashboard = ({ onSignOut }) => {
       </Drawer.Header>
 
       <Drawer.Body>
-        <h3>Hey, {profile.name}</h3>
+        <h3>Hey,{profile.name}</h3>
         <ProviderBlock />
         <Divider />
         <EditableInput

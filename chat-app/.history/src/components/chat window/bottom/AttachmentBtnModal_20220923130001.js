@@ -44,7 +44,6 @@ const AttachmentBtnModal = ({ afterUpload }) => {
 
       const files = await Promise.all(shapePromises);
 
-      console.log('fileList', fileList);
       await afterUpload(files);
 
       setIsLoading(false);

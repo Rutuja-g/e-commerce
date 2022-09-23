@@ -7,6 +7,7 @@ import { storage } from '../../../misc/firebase';
 const MAX_FILE_SIZE = 1000 * 1024 * 5;
 
 const AttachmentBtnModal = ({ afterUpload }) => {
+  console.log('fileList', fileList);
   const { chatId } = useParams();
   const { isOpen, close, open } = useModalState();
 
@@ -44,7 +45,6 @@ const AttachmentBtnModal = ({ afterUpload }) => {
 
       const files = await Promise.all(shapePromises);
 
-      console.log('fileList', fileList);
       await afterUpload(files);
 
       setIsLoading(false);

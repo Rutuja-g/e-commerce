@@ -28,7 +28,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
           .ref(`/chat/$(chatId)`)
           .child(Date.now() + f.name)
           .put(f.blobFile, {
-            cacheControl: `public,max-age=${3600 * 24 * 3}`,
+            cacheControl: `public,max-age=${3600 * 24 * 3} `,
           });
       });
 
@@ -44,7 +44,6 @@ const AttachmentBtnModal = ({ afterUpload }) => {
 
       const files = await Promise.all(shapePromises);
 
-      console.log('fileList', fileList);
       await afterUpload(files);
 
       setIsLoading(false);

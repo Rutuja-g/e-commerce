@@ -11,6 +11,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
   const { isOpen, close, open } = useModalState();
 
   const [fileList, setFileList] = useState([]);
+  console.log('fileList', fileList);
   const [isLoading, setIsLoading] = useState(false);
 
   const onChange = fileArr => {
@@ -44,7 +45,6 @@ const AttachmentBtnModal = ({ afterUpload }) => {
 
       const files = await Promise.all(shapePromises);
 
-      console.log('fileList', fileList);
       await afterUpload(files);
 
       setIsLoading(false);

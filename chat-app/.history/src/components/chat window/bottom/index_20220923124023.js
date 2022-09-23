@@ -64,35 +64,19 @@ const Bottom = () => {
       onSendClick();
     }
   };
-  const afterUpload = useCallback(
-    async files => {
-      setIsLoading(true);
-      const updates = {};
+  const afterUpload = useCallback(files => {
+    setIsLoading(true);
+    const updates = {};
 
-      files.forEach(file => {
-        const msgData = assembleMessage(profile, chatId);
-        msgData.file = file;
+    files.forEach(file => {
+      const msgData = assembleMessage(profile, chatId);
+      msgData.text = input;
 
-        const messageId = database.ref('mesages').push().key;
+      const messageId = database.ref('mesages').push().key;
 
-        updates[`/messages/${messageId}`] = msgData;
-      });
-
-      const lastMsgId = Object.keys(updates).pop();
-      updates[`/rooms/${chatId}/lastMessage`] = {
-        ...updates[lastMsgId],
-        msgId: lastMsgId,
-      };
-      try {
-        await database.ref().update(updates);
-        setIsLoading(false);
-      } catch (err) {
-        setIsLoading(false);
-        Alert.error(err.message);
-      }
-    },
-    [chatId, profile]
-  );
+      updates[`/messages/${messageId}`] = msgData;
+    });
+  }, []);
 
   return (
     <div>

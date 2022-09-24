@@ -128,11 +128,10 @@ const Messages = () => {
     );
 
     const items = [];
-
     Object.keys(groups).forEach(date => {
       items.push(
         <li key={date} className="text-center mb-1 padded">
-          {date}
+          {date}{' '}
         </li>
       );
       const msgs = groups[date].map(msg => (
@@ -144,12 +143,9 @@ const Messages = () => {
           handleDelete={handleDelete}
         />
       ));
-
-      items.push(...msgs);
+      items.push(msgs);
     });
-    return items;
   };
-
   return (
     <ul className="msg-list custom-scroll">
       {isChatEmpty && <li>No messages yet</li>}

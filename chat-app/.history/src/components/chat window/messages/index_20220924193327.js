@@ -127,15 +127,14 @@ const Messages = () => {
       new Date(item.createdAt).toDateString()
     );
 
-    const items = [];
-
+    let items = [];
     Object.keys(groups).forEach(date => {
       items.push(
         <li key={date} className="text-center mb-1 padded">
-          {date}
+          {date}{' '}
         </li>
       );
-      const msgs = groups[date].map(msg => (
+      const msgs = groups[date].map(
         <MessageItem
           key={msg.id}
           message={msg}
@@ -143,13 +142,9 @@ const Messages = () => {
           handleLike={handleLike}
           handleDelete={handleDelete}
         />
-      ));
-
-      items.push(...msgs);
+      );
     });
-    return items;
   };
-
   return (
     <ul className="msg-list custom-scroll">
       {isChatEmpty && <li>No messages yet</li>}

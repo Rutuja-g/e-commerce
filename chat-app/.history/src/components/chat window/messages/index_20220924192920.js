@@ -126,30 +126,16 @@ const Messages = () => {
     const groups = groupBy(messages, item =>
       new Date(item.createdAt).toDateString()
     );
-
-    const items = [];
-
-    Object.keys(groups).forEach(date => {
-      items.push(
-        <li key={date} className="text-center mb-1 padded">
-          {date}
-        </li>
-      );
-      const msgs = groups[date].map(msg => (
-        <MessageItem
-          key={msg.id}
-          message={msg}
-          handleAdmin={handleAdmin}
-          handleLike={handleLike}
-          handleDelete={handleDelete}
-        />
-      ));
-
-      items.push(...msgs);
-    });
-    return items;
+    // messages.map(msg => (
+    //   <MessageItem
+    //     key={msg.id}
+    //     message={msg}
+    //     handleAdmin={handleAdmin}
+    //     handleLike={handleLike}
+    //     handleDelete={handleDelete}
+    //   />
+    // ))
   };
-
   return (
     <ul className="msg-list custom-scroll">
       {isChatEmpty && <li>No messages yet</li>}

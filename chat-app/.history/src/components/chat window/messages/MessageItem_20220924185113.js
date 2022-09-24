@@ -26,7 +26,7 @@ const renderFileMessage = file => {
         Your browser does not support the audio element.
       </audio>
     );
-  }
+
   return <a href={file.url}> Download {file.name}</a>;
 };
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {

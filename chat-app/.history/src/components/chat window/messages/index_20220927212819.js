@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+// import { flushSync } from 'react-dom';
 import { useParams } from 'react-router';
 import { Alert, Button } from 'rsuite';
 import { auth, database, storage } from '../../../misc/firebase';
@@ -15,7 +16,6 @@ function shouldScrollToBottom(node, threshold = 30) {
 
   return percentage > threshold;
 }
-
 const Messages = () => {
   const { chatId } = useParams();
 
@@ -26,14 +26,14 @@ const Messages = () => {
   const canShowMessages = messages && messages.length > 0;
 
   const loadMessages = useCallback(
-    limitToLast => {
+    limitToUse => {
       const node = selfRef.current;
       messagesRef.off();
 
       messagesRef
         .orderByChild('roomId')
         .equalTo(chatId)
-        .limitToLast(limitToLast || PAGE_SIZE)
+        .limitToLast(limitToUse || PAGE_SIZE) // that number will be loaded on initial load
         .on('value', snap => {
           const data = transformToArrWithId(snap.val());
           setMessages(data);
@@ -57,7 +57,7 @@ const Messages = () => {
     setTimeout(() => {
       const newHeight = node.scrollHeight;
       node.scrollTop = newHeight - oldHeight;
-    }, 400);
+    }, 200);
   }, [loadMessages, limit]);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Messages = () => {
 
     setTimeout(() => {
       node.scrollTop = node.scrollHeight;
-    }, 400);
+    }, 200);
 
     return () => {
       messagesRef.off('value');
@@ -97,7 +97,6 @@ const Messages = () => {
     },
     [chatId]
   );
-
   const handleLike = useCallback(async msgId => {
     const { uid } = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
@@ -168,7 +167,6 @@ const Messages = () => {
     },
     [chatId, messages]
   );
-
   const renderMessages = () => {
     const groups = groupBy(messages, item =>
       new Date(item.createdAt).toDateString()

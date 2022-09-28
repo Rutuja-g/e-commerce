@@ -15,7 +15,6 @@ function shouldScrollToBottom(node, threshold = 30) {
 
   return percentage > threshold;
 }
-
 const Messages = () => {
   const { chatId } = useParams();
 
@@ -57,7 +56,7 @@ const Messages = () => {
     setTimeout(() => {
       const newHeight = node.scrollHeight;
       node.scrollTop = newHeight - oldHeight;
-    }, 400);
+    }, 200);
   }, [loadMessages, limit]);
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const Messages = () => {
 
     setTimeout(() => {
       node.scrollTop = node.scrollHeight;
-    }, 400);
+    }, 200);
 
     return () => {
       messagesRef.off('value');
@@ -97,7 +96,6 @@ const Messages = () => {
     },
     [chatId]
   );
-
   const handleLike = useCallback(async msgId => {
     const { uid } = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
@@ -168,7 +166,6 @@ const Messages = () => {
     },
     [chatId, messages]
   );
-
   const renderMessages = () => {
     const groups = groupBy(messages, item =>
       new Date(item.createdAt).toDateString()

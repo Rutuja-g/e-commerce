@@ -8,14 +8,6 @@ import MessageItem from './MessageItem';
 
 const PAGE_SIZE = 15;
 const messagesRef = database.ref('/messages');
-
-function shouldScrollToBottom(node, threshold = 30) {
-  const percentage =
-    (100 * node.scrollTop) / (node.scrollHeight - node.clientHeight) || 0;
-
-  return percentage > threshold;
-}
-
 const Messages = () => {
   const { chatId } = useParams();
 
@@ -27,20 +19,15 @@ const Messages = () => {
 
   const loadMessages = useCallback(
     limitToLast => {
-      const node = selfRef.current;
       messagesRef.off();
 
       messagesRef
         .orderByChild('roomId')
         .equalTo(chatId)
-        .limitToLast(limitToLast || PAGE_SIZE)
+        .limitToLast(limitToLast || PAGE_SIZE) // that number will be loaded on initial load
         .on('value', snap => {
           const data = transformToArrWithId(snap.val());
           setMessages(data);
-
-          if (shouldScrollToBottom(node)) {
-            node.scrollTop = node.scrollHeight;
-          }
         });
 
       setLimit(p => p + PAGE_SIZE);
@@ -51,23 +38,16 @@ const Messages = () => {
   const onLoadMore = useCallback(() => {
     const node = selfRef.current;
     const oldHeight = node.scrollHeight;
-
     loadMessages(limit);
-
-    setTimeout(() => {
-      const newHeight = node.scrollHeight;
-      node.scrollTop = newHeight - oldHeight;
-    }, 400);
   }, [loadMessages, limit]);
 
   useEffect(() => {
     const node = selfRef.current;
 
     loadMessages();
-
     setTimeout(() => {
       node.scrollTop = node.scrollHeight;
-    }, 400);
+    }, 200);
 
     return () => {
       messagesRef.off('value');
@@ -97,7 +77,6 @@ const Messages = () => {
     },
     [chatId]
   );
-
   const handleLike = useCallback(async msgId => {
     const { uid } = auth.currentUser;
     const messageRef = database.ref(`/messages/${msgId}`);
@@ -168,7 +147,6 @@ const Messages = () => {
     },
     [chatId, messages]
   );
-
   const renderMessages = () => {
     const groups = groupBy(messages, item =>
       new Date(item.createdAt).toDateString()

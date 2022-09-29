@@ -35,12 +35,10 @@ const SignIn = () => {
         <Row>
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
-              <Modal>
-                <div className="text-center">
-                  <h2>Welcome to Chat</h2>
-                  <p>Progressive chat platform for neophytes</p>
-                </div>
-              </Modal>
+              <div className="text-center">
+                <h2>Welcome to Chat</h2>
+                <p>Progressive chat platform for neophytes</p>
+              </div>
               <div className="mt-3">
                 <Button block color="blue" onClick={onFacebookSignIn}>
                   <Icon icon="facebook" /> Continue with Facebook

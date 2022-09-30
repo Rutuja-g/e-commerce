@@ -1,9 +1,0 @@
-import React from 'react';
-import { Avatar } from 'rsuite';
-import { getNameInitials } from '../misc/Helpers';
-
-const ProfileAvatar = ({ name, ...avatarProps }) => {
-  return <Avatar {...avatarProps}>{getNameInitials(name)}</Avatar>;
-};
-
-export default ProfileAvatar;

@@ -8,8 +8,6 @@ import FilterCheckbox from "../components/FilterCheckbox";
 import Products from "../components/Products";
 
 function getComputedProducts(products, filters) {
-  // const result = products; would create a reference thus doesn't apply
-  // [...someArray] creates a new array from elements of someArray
   let result = [...products];
 
   if (filters.delivery) {
@@ -23,7 +21,6 @@ function getComputedProducts(products, filters) {
   if (filters.expensive) {
     result = result.filter((p) => p.price > 100);
   }
-
   return result;
 }
 
@@ -31,6 +28,7 @@ const Category = ({ category }) => {
   const [products] = useState(
     fakeProducts.filter((p) => p.categoryId === category.id)
   );
+
   const [filter, dispatchFilter] = useFilters({
     delivery: false,
     inStock: false,
@@ -75,10 +73,10 @@ const Category = ({ category }) => {
             name="expensive"
             checked={filter.expensive}
             onChange={onCheckboxChange}
-            label="Expensive (100+ USD)"
+            label="Expensive (100+USD)"
           />
           <div className="mt-">
-            Showing {filteredProducts.length} out of {products.length}
+            Showing {filteredProducts.length}out of {products.length}
           </div>
         </div>
       </Col>
@@ -94,14 +92,7 @@ const Category = ({ category }) => {
 
 const CategoryContainer = () => {
   const { id } = useParams();
-
   const category = categories.find((c) => c.id === id);
-
-  if (!category) {
-    return <div>Category with id {id} does not exist</div>;
-  }
-
-  return <Category category={category} />;
 };
 
 export default CategoryContainer;

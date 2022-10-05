@@ -8,15 +8,7 @@ const Home = () => {
     <Container>
       <Row>
         {categories.map((c) => (
-          <Col
-            tag={Link}
-            key={c.id}
-            to={`/category/${c.id}`}
-            className="text-dark mb-3 bg-white py-5 shadow-sm rounded-lg flex-fill text-center"
-          >
-            <h2 className="h3">{c.name} </h2>
-            <div>{c.description} </div>
-          </Col>
+          <Col tag={Link} key={c.id} to={`/category/${c.id} `}></Col>
         ))}
       </Row>
     </Container>

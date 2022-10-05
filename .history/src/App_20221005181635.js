@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Container } from "reactstrap";
-import Navbar from "./components/Navbar";
+// import { Container } from "reactstrap";
+// import Navbar from "./components/Navbar";
 import { CartProvider } from "./lib/cart.context";
 import Category from "./pages/Category";
 import Checkout from "./pages/Checkout";

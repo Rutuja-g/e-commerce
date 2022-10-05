@@ -34,13 +34,6 @@ const Checkout = () => {
     [dispatchCart]
   );
 
-  const handleRemoveOne = useCallback(
-    (id) => {
-      dispatchCart({ type: "REMOVE_ONE", id });
-    },
-    [dispatchCart]
-  );
-
   const handleRemove = useCallback(
     (id) => {
       dispatchCart({ type: "REMOVE", id });
@@ -97,30 +90,10 @@ const Checkout = () => {
                     </Button>
                   </ButtonGroup>
                 </td>
-                <td className="font-weight-bold align-middle">
-                  <Button
-                    color="dark"
-                    className="rounded-circle d-flex justify-content-center align-conten-center"
-                    style={{
-                      width: 30,
-                      height: 30,
-                      lineHeight: 0.6,
-                      fontSize: 20,
-                    }}
-                    type="button"
-                    onClick={() => handleRemove(el.id)}
-                  >
-                    &times;
-                  </Button>
-                </td>
               </tr>
             ))}
           </tbody>
         </Table>
-        <hr />
-        <div className="text=rigth">
-          <div>Total ${cartPriceTotal}</div>
-        </div>
       </div>
     </div>
   );

@@ -34,13 +34,6 @@ const Checkout = () => {
     [dispatchCart]
   );
 
-  const handleRemoveOne = useCallback(
-    (id) => {
-      dispatchCart({ type: "REMOVE_ONE", id });
-    },
-    [dispatchCart]
-  );
-
   const handleRemove = useCallback(
     (id) => {
       dispatchCart({ type: "REMOVE", id });
@@ -75,52 +68,11 @@ const Checkout = () => {
                 <td className="font-weight-bold align-middle text-nowrap">
                   {el.name}
                 </td>
-                <td className="font-weight-bold align-middle">${el.price}</td>
-                <td className="font-weight-bold align-middle">
-                  <ButtonGroup>
-                    <Button
-                      size="sm"
-                      type="button"
-                      onClick={() => handleRemoveOne(el.id)}
-                    >
-                      -
-                    </Button>
-                    <Button disabled style={{ width: 45 }}>
-                      {el.quantity}
-                    </Button>
-                    <Button
-                      size="sm"
-                      type="button"
-                      onClick={() => handleAdd(el.id)}
-                    >
-                      +
-                    </Button>
-                  </ButtonGroup>
-                </td>
-                <td className="font-weight-bold align-middle">
-                  <Button
-                    color="dark"
-                    className="rounded-circle d-flex justify-content-center align-conten-center"
-                    style={{
-                      width: 30,
-                      height: 30,
-                      lineHeight: 0.6,
-                      fontSize: 20,
-                    }}
-                    type="button"
-                    onClick={() => handleRemove(el.id)}
-                  >
-                    &times;
-                  </Button>
-                </td>
+                <td>${el.price}</td>
               </tr>
             ))}
           </tbody>
         </Table>
-        <hr />
-        <div className="text=rigth">
-          <div>Total ${cartPriceTotal}</div>
-        </div>
       </div>
     </div>
   );

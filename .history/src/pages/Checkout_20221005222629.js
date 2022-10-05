@@ -34,13 +34,6 @@ const Checkout = () => {
     [dispatchCart]
   );
 
-  const handleRemoveOne = useCallback(
-    (id) => {
-      dispatchCart({ type: "REMOVE_ONE", id });
-    },
-    [dispatchCart]
-  );
-
   const handleRemove = useCallback(
     (id) => {
       dispatchCart({ type: "REMOVE", id });

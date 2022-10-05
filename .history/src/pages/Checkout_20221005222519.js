@@ -34,13 +34,6 @@ const Checkout = () => {
     [dispatchCart]
   );
 
-  const handleRemoveOne = useCallback(
-    (id) => {
-      dispatchCart({ type: "REMOVE_ONE", id });
-    },
-    [dispatchCart]
-  );
-
   const handleRemove = useCallback(
     (id) => {
       dispatchCart({ type: "REMOVE", id });
@@ -109,18 +102,12 @@ const Checkout = () => {
                     }}
                     type="button"
                     onClick={() => handleRemove(el.id)}
-                  >
-                    &times;
-                  </Button>
+                  ></Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
-        <hr />
-        <div className="text=rigth">
-          <div>Total ${cartPriceTotal}</div>
-        </div>
       </div>
     </div>
   );

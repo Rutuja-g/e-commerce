@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
 import React from "react";
 import { CustomInput } from "reactstrap";
 
 const FilterCheckbox = ({ id, name, checked, onChange, label }) => {
-  // console.log("label prop:", label); // Log the label prop value
   return (
     <div>
       <CustomInput
@@ -19,3 +17,5 @@ const FilterCheckbox = ({ id, name, checked, onChange, label }) => {
 };
 
 export default FilterCheckbox;
+// eslint-disable-next-line no-undef, no-console
+console.log("label prop:", label);
